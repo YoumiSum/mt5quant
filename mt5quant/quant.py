@@ -101,6 +101,8 @@ class MT5Quant(ABC):
 
         # check STRATEGY STATUE, if open run continue, else close
         # this statue will change by ctrl+c in terminal, or may be change by other reason in future
+        last_tick = mt5.symbol_info_tick(self.symbols[0])
+        last_time = last_tick.time
         last_time = None
         while self._STRATEGY_STATUE_ == STRATEGY_STATUES.OPEN:
             last_tick = mt5.symbol_info_tick(self.symbols[0])
